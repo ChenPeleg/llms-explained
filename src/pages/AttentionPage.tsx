@@ -1,84 +1,52 @@
 import AttentionHeatmap from '../components/AttentionHeatmap';
+import { useTranslate } from '../hooks/useTranslate';
 
 /**
  * Attention Mechanism Page
  * Covers self-attention, multi-head attention, and scaled dot-product attention.
  */
 const AttentionPage = () => {
+    const { t } = useTranslate();
+
     return (
         <article className="prose prose-gray max-w-none dark:prose-invert">
-            <h1>Attention Mechanism</h1>
+            <h1>{t('att_h1')}</h1>
 
-            <p>
-                Attention is the core operation that allows the Transformer to
-                model relationships between tokens regardless of their distance
-                in the sequence. Unlike RNNs, there's no sequential bottleneck.
-            </p>
+            <p>{t('att_intro')}</p>
 
-            <h2>Scaled Dot-Product Attention</h2>
-            <p>
-                Given an input matrix <code>X</code>, three projections are
-                computed:
-            </p>
+            <h2>{t('att_h2_sdp')}</h2>
+            <p>{t('att_sdp_intro')}</p>
             <ul>
                 <li>
-                    <strong>Q (Query)</strong> — what this position is looking
-                    for.
+                    <strong>{t('att_q_label')}</strong> — {t('att_q_desc')}
                 </li>
                 <li>
-                    <strong>K (Key)</strong> — what each position has to offer.
+                    <strong>{t('att_k_label')}</strong> — {t('att_k_desc')}
                 </li>
                 <li>
-                    <strong>V (Value)</strong> — the actual information to
-                    aggregate.
+                    <strong>{t('att_v_label')}</strong> — {t('att_v_desc')}
                 </li>
             </ul>
-            <p>The attention output is:</p>
+            <p>{t('att_formula_label')}</p>
             <pre>
                 <code>Attention(Q, K, V) = softmax(Q Kᵀ / √d_k) · V</code>
             </pre>
-            <p>
-                Dividing by <code>√d_k</code> (the key dimension) prevents the
-                dot products from growing large and pushing softmax into
-                saturation.
-            </p>
+            <p>{t('att_scaling_p')}</p>
 
-            <h2>Multi-Head Attention</h2>
-            <p>
-                Instead of a single attention function, the model runs{' '}
-                <em>h</em> attention heads in parallel, each with its own
-                Q/K/V projections into a smaller subspace (dimension{' '}
-                <code>d_k = d_model / h</code>). The outputs are concatenated
-                and projected back:
-            </p>
+            <h2>{t('att_h2_mha')}</h2>
+            <p>{t('att_mha_p')}</p>
             <pre>
                 <code>
                     MultiHead(Q, K, V) = Concat(head₁, …, headₕ) · Wₒ
                 </code>
             </pre>
-            <p>
-                Different heads can specialise — one might focus on syntactic
-                agreement, another on co-reference, another on semantic
-                similarity.
-            </p>
+            <p>{t('att_mha_p2')}</p>
 
-            <h2>Causal (Masked) Attention</h2>
-            <p>
-                In decoder-only models (GPT family), the attention matrix is
-                masked so each position can only attend to itself and
-                earlier positions. This preserves the auto-regressive property:
-                the model predicts token <em>t</em> using only tokens 1 … t−1.
-            </p>
+            <h2>{t('att_h2_causal')}</h2>
+            <p>{t('att_causal_p')}</p>
 
-            <h2>Flash Attention</h2>
-            <p>
-                The naive attention implementation materialises the full{' '}
-                <code>N × N</code> attention matrix, which is{' '}
-                <strong>O(N²)</strong> in memory. Flash Attention rewrites the
-                computation using tiling to keep it in fast SRAM, reducing
-                memory to <strong>O(N)</strong> while computing exactly the
-                same result.
-            </p>
+            <h2>{t('att_h2_flash')}</h2>
+            <p>{t('att_flash_p')}</p>
 
             {/* Interactive heatmap */}
             <div className="not-prose my-6">

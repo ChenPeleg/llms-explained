@@ -1,80 +1,73 @@
 import { NavLink } from 'react-router';
-
-const TOPICS = [
-    {
-        to: '/tokenization',
-        emoji: '✂️',
-        title: 'Tokenization',
-        description:
-            'How raw text is split into tokens using algorithms like BPE and WordPiece.',
-    },
-    {
-        to: '/embeddings',
-        emoji: '🔢',
-        title: 'Embeddings',
-        description:
-            'Turning tokens into dense vectors and navigating semantic space.',
-    },
-    {
-        to: '/transformer',
-        emoji: '🏗️',
-        title: 'Transformer Architecture',
-        description:
-            'Encoder/decoder blocks, residual connections, and layer normalisation.',
-    },
-    {
-        to: '/attention',
-        emoji: '👁️',
-        title: 'Attention Mechanism',
-        description:
-            'Self-attention, multi-head attention, and scaled dot-product attention.',
-    },
-    {
-        to: '/training',
-        emoji: '🎯',
-        title: 'Training',
-        description:
-            'Pre-training objectives like next-token prediction and masked language modelling.',
-    },
-    {
-        to: '/inference',
-        emoji: '⚡',
-        title: 'Inference & Sampling',
-        description:
-            'Temperature, top-k, top-p, and greedy decoding strategies.',
-    },
-    {
-        to: '/scaling',
-        emoji: '📈',
-        title: 'Scaling Laws',
-        description:
-            'Chinchilla and compute-optimal training — what happens when you scale up.',
-    },
-    {
-        to: '/finetuning',
-        emoji: '🎛️',
-        title: 'Fine-Tuning & RLHF',
-        description:
-            'Supervised fine-tuning, reward models, and proximal policy optimisation.',
-    },
-];
+import { useTranslate } from '../hooks/useTranslate';
 
 /**
  * Home Page
  * Landing page with a brief intro and links to all topic sections.
  */
 const HomePage = () => {
+    const { t } = useTranslate();
+
+    const TOPICS = [
+        {
+            to: '/tokenization',
+            emoji: '✂️',
+            titleKey: 'nav_tokenization',
+            descKey: 'home_topic_tokenization_desc',
+        },
+        {
+            to: '/embeddings',
+            emoji: '🔢',
+            titleKey: 'nav_embeddings',
+            descKey: 'home_topic_embeddings_desc',
+        },
+        {
+            to: '/transformer',
+            emoji: '🏗️',
+            titleKey: 'nav_transformer',
+            descKey: 'home_topic_transformer_desc',
+        },
+        {
+            to: '/attention',
+            emoji: '👁️',
+            titleKey: 'nav_attention',
+            descKey: 'home_topic_attention_desc',
+        },
+        {
+            to: '/training',
+            emoji: '🎯',
+            titleKey: 'nav_training',
+            descKey: 'home_topic_training_desc',
+        },
+        {
+            to: '/inference',
+            emoji: '⚡',
+            titleKey: 'nav_inference',
+            descKey: 'home_topic_inference_desc',
+        },
+        {
+            to: '/scaling',
+            emoji: '📈',
+            titleKey: 'nav_scaling',
+            descKey: 'home_topic_scaling_desc',
+        },
+        {
+            to: '/finetuning',
+            emoji: '🎛️',
+            titleKey: 'nav_finetuning',
+            descKey: 'home_topic_finetuning_desc',
+        },
+    ];
+
     return (
         <div>
             {/* Hero */}
             <div className="mb-10">
                 <h1 className="mb-3 text-4xl font-bold text-gray-900 dark:text-gray-100">
-                    LLMs Explained
+                    {t('home_hero_title')}
                 </h1>
                 <p className="max-w-2xl text-lg text-gray-600 dark:text-gray-300">
-                    A visual, interactive guide to how Large Language Models
-                    work — from raw text to next-token probabilities. No
-                    backend, no API calls; everything runs in your browser.
+                    {t('home_hero_desc')}
                 </p>
             </div>
 
@@ -94,11 +87,11 @@ const HomePage = () => {
                                 {topic.emoji}
                             </span>
                             <h2 className="text-lg font-semibold text-gray-900 group-hover:text-blue-600 dark:text-gray-100 dark:group-hover:text-blue-400">
-                                {topic.title}
+                                {t(topic.titleKey)}
                             </h2>
                         </div>
                         <p className="text-sm text-gray-600 dark:text-gray-400">
-                            {topic.description}
+                            {t(topic.descKey)}
                         </p>
                     </NavLink>
                 ))}
