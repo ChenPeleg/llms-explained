@@ -13,8 +13,7 @@
         "preview": "vite preview",
         "test": "vitest run --project unit",
         "storybook": "storybook dev -p 6006",
-        "build-storybook": "storybook build"
-        ,
+        "build-storybook": "storybook build",
         "test-storybook": "vitest run --project storybook"
     },
     "dependencies": {
@@ -31,6 +30,7 @@
         "@storybook/addon-onboarding": "^10.3.6",
         "@storybook/addon-vitest": "^10.3.6",
         "@storybook/react-vite": "^10.3.6",
+        "@tailwindcss/typography": "^0.5.19",
         "@tailwindcss/vite": "^4.2.4",
         "@testing-library/jest-dom": "^6.9.1",
         "@testing-library/react": "^16.3.2",
