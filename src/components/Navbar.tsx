@@ -1,12 +1,9 @@
 import { useNavigate } from 'react-router';
-import { useUser } from '../stores/UserContext';
 import { useTranslate } from '../hooks/useTranslate';
 import { useLanguage } from '../hooks/useLanguage';
 import { useTheme } from '../hooks/useTheme';
 import { Language } from '../models/Language';
-import { useService } from '../services/provider/useService';
-import { UserService } from '../services/User.service';
-import { AppButton, AppDropdown, AppSelect } from '../common';
+import { AppButton, AppSelect } from '../common';
 
 /**
  * Mapping of language codes to their translation keys
@@ -49,20 +46,13 @@ const MoonIcon = () => (
 
 /**
  * Navbar Component
- * Displayed on all routes with navigation and user information
+ * Displayed on all routes with navigation controls
  */
 const Navbar = () => {
     const navigate = useNavigate();
-    const { user, clearUser } = useUser();
     const { t } = useTranslate();
     const { language, setLanguage, availableLanguages } = useLanguage();
     const { theme, setTheme } = useTheme();
-    const [userService] = useService([UserService]);
-
-    const handleLogout = async () => {
-        await userService.logout();
-        clearUser();
-    };
 
     return (
         <header className="bg-white shadow-sm dark:bg-gray-900 dark:shadow-gray-700">
@@ -78,12 +68,6 @@ const Navbar = () => {
                         >
                             {t('כותרת_אפליקציה')}
                         </AppButton>
-                        {user && (
-                            <span className="hidden text-sm text-gray-600 sm:block dark:text-gray-400">
-                                {t('ברכה_שלום')},{' '}
-                                {user.name?.trim() || user.email}
-                            </span>
-                        )}
                     </div>
                     <div className="flex items-center gap-3">
                         <AppButton
@@ -128,39 +112,6 @@ const Navbar = () => {
                         >
                             {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
                         </AppButton>
-
-                        {/* User Avatar Dropdown */}
-                        {user && (
-                            <AppDropdown
-                                position="right"
-                                trigger={
-                                    <AppButton
-                                        type="button"
-                                        variant="primary"
-                                        className="h-10 w-10 rounded-full p-0 text-sm font-semibold"
-                                        aria-label="User menu"
-                                    >
-                                        {userService.getUserInitials(user)}
-                                    </AppButton>
-                                }
-                                items={[
-                                    {
-                                        label: t('ניווט_פרופיל'),
-                                        onClick: () => navigate('/profile'),
-                                    },
-                                    {
-                                        label: t('כפתור_מסך_מנהל'),
-                                        onClick: () =>
-                                            userService.navigateToAdmin(),
-                                        divider: true,
-                                    },
-                                    {
-                                        label: t('כפתור_התנתק'),
-                                        onClick: handleLogout,
-                                    },
-                                ]}
-                            />
-                        )}
                     </div>
                 </div>
             </div>

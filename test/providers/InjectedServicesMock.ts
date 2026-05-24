@@ -1,17 +1,11 @@
-import { ApiService } from '../../src/services/Api.service.ts';
 import type { ServiceInjectionMethod } from '../../src/services/provider/ServiceResolverClass.ts';
 import { injectedServices } from '../../src/services/injection/injectedServices.ts';
-import { APIServiceMock } from '../mocks/ApiServiceMock.ts';
 
 export class InjectedServicesMock {
     private readonly _mockedServices: typeof injectedServices;
     constructor(override: ServiceInjectionMethod[] = []) {
         this._mockedServices = this.replaceServices(
             this.originalServices,
-            this.defaultMockedServices
-        );
-        this._mockedServices = this.replaceServices(
-            this._mockedServices,
             override || []
         );
     }
@@ -20,20 +14,6 @@ export class InjectedServicesMock {
     }
     public get services() {
         return this._mockedServices;
-    }
-    public get defaultMockedServices(): ServiceInjectionMethod[] {
-        return [
-            {
-                provide: ApiService,
-                useFactory: (serviceResolver) => {
-                    const apiServiceMock = new APIServiceMock(serviceResolver);
-                    apiServiceMock.mockApi({
-                        ...apiServiceMock.defaultMocks(),
-                    });
-                    return apiServiceMock;
-                },
-            },
-        ];
     }
     private replaceServices(
         originalList: ServiceInjectionMethod[],

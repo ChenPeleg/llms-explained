@@ -4,7 +4,6 @@ import { describe, expect, it } from 'vitest';
 
 import { ServicesProvider } from '../src/services/provider/ServicesProvider.tsx';
 import { injectedServices } from '../src/services/injection/injectedServices.ts';
-import { UserProvider } from '../src/stores/UserContext.tsx';
 import { GlobalStateContextProvider } from '../src/stores/GlobalState.tsx';
 import { AppRoutes } from '../src/AppRoutes.tsx';
 
@@ -13,9 +12,7 @@ function renderApp(route: string = '/') {
         <MemoryRouter initialEntries={[route]}>
             <ServicesProvider services={injectedServices}>
                 <GlobalStateContextProvider>
-                    <UserProvider>
-                        <AppRoutes />
-                    </UserProvider>
+                    <AppRoutes />
                 </GlobalStateContextProvider>
             </ServicesProvider>
         </MemoryRouter>
