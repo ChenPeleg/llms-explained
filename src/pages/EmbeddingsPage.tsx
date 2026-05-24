@@ -1,4 +1,5 @@
 import embeddingData from '../data/embedding-projections.json';
+import { useTranslate } from '../hooks/useTranslate';
 
 interface EmbeddingPoint {
     word: string;
@@ -14,7 +15,7 @@ const CLUSTER_COLORS = [
     { fill: '#8b5cf6', stroke: '#4c1d95' },   // violet – cities
 ];
 
-const CLUSTER_LABELS = ['Royalty', 'People', 'Animals', 'Cities'];
+const CLUSTER_KEY_SUFFIXES = ['royalty', 'people', 'animals', 'cities'];
 
 const points = embeddingData as EmbeddingPoint[];
 
@@ -23,76 +24,57 @@ const points = embeddingData as EmbeddingPoint[];
  * Covers word vectors, semantic space, and a 2-D scatter plot demo.
  */
 const EmbeddingsPage = () => {
+    const { t } = useTranslate();
+
+    const clusterLabels = CLUSTER_KEY_SUFFIXES.map((s) =>
+        t(`emb_cluster_${s}`)
+    );
+
     return (
         <article className="prose prose-gray max-w-none dark:prose-invert">
-            <h1>Embeddings</h1>
+            <h1>{t('emb_h1')}</h1>
 
-            <p>
-                Tokens are discrete symbols — they have no inherent numerical
-                meaning. An <strong>embedding</strong> is a learned dense
-                vector that gives each token a position in a continuous
-                high-dimensional space. Similar tokens end up near each other.
-            </p>
+            <p>{t('emb_intro')}</p>
 
-            <h2>From One-Hot to Dense Vectors</h2>
-            <p>
-                A vocabulary of 50,000 words could be represented with
-                one-hot vectors of length 50,000, but these are sparse and
-                encode no similarity. An embedding matrix{' '}
-                <code>E ∈ ℝ^(vocab × d_model)</code> maps each token ID to a
-                dense vector of dimension <code>d_model</code> (e.g., 768 for
-                BERT-base, 4096 for LLaMA-2-7B).
-            </p>
+            <h2>{t('emb_h2_onehot')}</h2>
+            <p>{t('emb_onehot_p')}</p>
 
-            <h2>Semantic Properties</h2>
-            <p>
-                Embeddings capture rich semantic and syntactic relationships.
-                The classic example:
-            </p>
+            <h2>{t('emb_h2_semantic')}</h2>
+            <p>{t('emb_semantic_p')}</p>
             <blockquote>
                 <code>king − man + woman ≈ queen</code>
             </blockquote>
-            <p>
-                This works because direction in embedding space corresponds to
-                meaning. "Royalty" is a direction; "gender" is another.
-            </p>
+            <p>{t('emb_direction_p')}</p>
 
-            <h2>Positional Encodings</h2>
-            <p>
-                Self-attention is permutation-invariant — it doesn't know the
-                order of tokens by default. <strong>Positional encodings</strong>{' '}
-                are added to (or concatenated with) token embeddings to inject
-                position information:
-            </p>
+            <h2>{t('emb_h2_positional')}</h2>
+            <p>{t('emb_positional_p')}</p>
             <ul>
                 <li>
-                    <strong>Sinusoidal</strong> (original Transformer): fixed
-                    sine/cosine patterns at different frequencies.
+                    <strong>{t('emb_pos_sinusoidal_label')}</strong>{' '}
+                    {t('emb_pos_sinusoidal_desc')}
                 </li>
                 <li>
-                    <strong>Learned</strong> (BERT, GPT): a trainable position
-                    embedding table.
+                    <strong>{t('emb_pos_learned_label')}</strong>{' '}
+                    {t('emb_pos_learned_desc')}
                 </li>
                 <li>
-                    <strong>RoPE / ALiBi</strong> (LLaMA, Mistral): rotary or
-                    relative positional encodings that generalise better to
-                    long sequences.
+                    <strong>{t('emb_pos_rope_label')}</strong>{' '}
+                    {t('emb_pos_rope_desc')}
                 </li>
             </ul>
 
             {/* 2-D Scatter Plot */}
             <div className="not-prose my-6 rounded-xl border border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800">
                 <h3 className="mb-1 text-lg font-semibold text-gray-900 dark:text-gray-100">
-                    Embedding Space (2-D PCA Projection)
+                    {t('emb_scatter_title')}
                 </h3>
                 <p className="mb-4 text-sm text-gray-500 dark:text-gray-400">
-                    Pre-computed 2-D projections showing how semantically
-                    similar words cluster together.
+                    {t('emb_scatter_desc')}
                 </p>
 
                 {/* Legend */}
                 <div className="mb-3 flex flex-wrap gap-3">
-                    {CLUSTER_LABELS.map((label, i) => (
+                    {clusterLabels.map((label, i) => (
                         <span
                             key={label}
                             className="flex items-center gap-1.5 text-sm text-gray-700 dark:text-gray-300"

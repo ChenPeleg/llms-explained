@@ -22,12 +22,12 @@ function renderApp(route: string = '/') {
 describe('App', () => {
     it('renders the home page at "/"', () => {
         renderApp('/');
-        expect(screen.getAllByText('LLMs Explained').length).toBeGreaterThan(0);
+        expect(screen.getAllByText('LLMs מוסבר').length).toBeGreaterThan(0);
     });
 
     it('renders the tokenization page at "/tokenization"', () => {
         renderApp('/tokenization');
         const headings = screen.getAllByRole('heading', { level: 1 });
-        expect(headings.some((h) => h.textContent === 'Tokenization')).toBe(true);
+        expect(headings.some((h) => h.textContent === 'טוקניזציה')).toBe(true);
     });
 });
