@@ -1,3 +1,4 @@
+import { Link } from 'react-router';
 import embeddingData from '../data/embedding-projections.json';
 import { useTranslate } from '../hooks/useTranslate';
 
@@ -9,10 +10,10 @@ interface EmbeddingPoint {
 }
 
 const CLUSTER_COLORS = [
-    { fill: '#3b82f6', stroke: '#1d4ed8' },   // blue  – royalty
-    { fill: '#10b981', stroke: '#065f46' },   // green – people
-    { fill: '#f59e0b', stroke: '#92400e' },   // amber – animals
-    { fill: '#8b5cf6', stroke: '#4c1d95' },   // violet – cities
+    { fill: '#3b82f6', stroke: '#1d4ed8' },
+    { fill: '#10b981', stroke: '#065f46' },
+    { fill: '#f59e0b', stroke: '#92400e' },
+    { fill: '#8b5cf6', stroke: '#4c1d95' },
 ];
 
 const CLUSTER_KEY_SUFFIXES = ['royalty', 'people', 'animals', 'cities'];
@@ -31,7 +32,7 @@ const EmbeddingsPage = () => {
     );
 
     return (
-        <article className="prose prose-gray max-w-none dark:prose-invert">
+        <article className="prose prose-gray dark:prose-invert max-w-none">
             <h1>{t('emb_h1')}</h1>
 
             <p>{t('emb_intro')}</p>
@@ -63,7 +64,6 @@ const EmbeddingsPage = () => {
                 </li>
             </ul>
 
-            {/* 2-D Scatter Plot */}
             <div className="not-prose my-6 rounded-xl border border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800">
                 <h3 className="mb-1 text-lg font-semibold text-gray-900 dark:text-gray-100">
                     {t('emb_scatter_title')}
@@ -72,7 +72,6 @@ const EmbeddingsPage = () => {
                     {t('emb_scatter_desc')}
                 </p>
 
-                {/* Legend */}
                 <div className="mb-3 flex flex-wrap gap-3">
                     {clusterLabels.map((label, i) => (
                         <span
@@ -124,6 +123,30 @@ const EmbeddingsPage = () => {
                         );
                     })}
                 </svg>
+            </div>
+
+            <div className="not-prose mt-8 rounded-xl border border-blue-100 bg-blue-50 p-6 dark:border-blue-900/30 dark:bg-blue-900/10">
+                <h2 className="mb-3 text-lg font-semibold text-blue-900 dark:text-blue-200">
+                    {t('dive_deeper')}
+                </h2>
+                <ul className="space-y-2">
+                    <li>
+                        <Link
+                            to="/embeddings/word2vec"
+                            className="text-blue-700 hover:underline dark:text-blue-300"
+                        >
+                            {t('sub_word2vec_h1')}
+                        </Link>
+                    </li>
+                    <li>
+                        <Link
+                            to="/embeddings/positional-encodings"
+                            className="text-blue-700 hover:underline dark:text-blue-300"
+                        >
+                            {t('sub_positional_h1')}
+                        </Link>
+                    </li>
+                </ul>
             </div>
         </article>
     );

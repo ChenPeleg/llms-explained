@@ -1,3 +1,4 @@
+import { Link } from 'react-router';
 import TokenizerPlayground from '../components/TokenizerPlayground';
 import { useTranslate } from '../hooks/useTranslate';
 
@@ -9,7 +10,7 @@ const TokenizationPage = () => {
     const { t } = useTranslate();
 
     return (
-        <article className="prose prose-gray max-w-none dark:prose-invert">
+        <article className="prose prose-gray dark:prose-invert max-w-none">
             <h1>{t('tok_h1')}</h1>
 
             <p>{t('tok_intro')}</p>
@@ -40,9 +41,40 @@ const TokenizationPage = () => {
             <h2>{t('tok_h2_practice')}</h2>
             <p>{t('tok_practice_p')}</p>
 
-            {/* Interactive Demo */}
             <div className="not-prose my-6">
                 <TokenizerPlayground />
+            </div>
+
+            <div className="not-prose mt-8 rounded-xl border border-blue-100 bg-blue-50 p-6 dark:border-blue-900/30 dark:bg-blue-900/10">
+                <h2 className="mb-3 text-lg font-semibold text-blue-900 dark:text-blue-200">
+                    {t('dive_deeper')}
+                </h2>
+                <ul className="space-y-2">
+                    <li>
+                        <Link
+                            to="/tokenization/tiktoken"
+                            className="text-blue-700 hover:underline dark:text-blue-300"
+                        >
+                            {t('sub_tiktoken_h1')}
+                        </Link>
+                    </li>
+                    <li>
+                        <Link
+                            to="/tokenization/wordpiece"
+                            className="text-blue-700 hover:underline dark:text-blue-300"
+                        >
+                            {t('sub_wordpiece_h1')}
+                        </Link>
+                    </li>
+                    <li>
+                        <Link
+                            to="/tokenization/sentencepiece"
+                            className="text-blue-700 hover:underline dark:text-blue-300"
+                        >
+                            {t('sub_sentencepiece_h1')}
+                        </Link>
+                    </li>
+                </ul>
             </div>
         </article>
     );

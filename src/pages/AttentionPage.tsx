@@ -1,3 +1,4 @@
+import { Link } from 'react-router';
 import AttentionHeatmap from '../components/AttentionHeatmap';
 import { useTranslate } from '../hooks/useTranslate';
 
@@ -9,7 +10,7 @@ const AttentionPage = () => {
     const { t } = useTranslate();
 
     return (
-        <article className="prose prose-gray max-w-none dark:prose-invert">
+        <article className="prose prose-gray dark:prose-invert max-w-none">
             <h1>{t('att_h1')}</h1>
 
             <p>{t('att_intro')}</p>
@@ -36,9 +37,7 @@ const AttentionPage = () => {
             <h2>{t('att_h2_mha')}</h2>
             <p>{t('att_mha_p')}</p>
             <pre>
-                <code>
-                    MultiHead(Q, K, V) = Concat(head₁, …, headₕ) · Wₒ
-                </code>
+                <code>MultiHead(Q, K, V) = Concat(head₁, …, headₕ) · Wₒ</code>
             </pre>
             <p>{t('att_mha_p2')}</p>
 
@@ -48,9 +47,40 @@ const AttentionPage = () => {
             <h2>{t('att_h2_flash')}</h2>
             <p>{t('att_flash_p')}</p>
 
-            {/* Interactive heatmap */}
             <div className="not-prose my-6">
                 <AttentionHeatmap />
+            </div>
+
+            <div className="not-prose mt-8 rounded-xl border border-blue-100 bg-blue-50 p-6 dark:border-blue-900/30 dark:bg-blue-900/10">
+                <h2 className="mb-3 text-lg font-semibold text-blue-900 dark:text-blue-200">
+                    {t('dive_deeper')}
+                </h2>
+                <ul className="space-y-2">
+                    <li>
+                        <Link
+                            to="/attention/self-attention"
+                            className="text-blue-700 hover:underline dark:text-blue-300"
+                        >
+                            {t('sub_selfattn_h1')}
+                        </Link>
+                    </li>
+                    <li>
+                        <Link
+                            to="/attention/multi-head"
+                            className="text-blue-700 hover:underline dark:text-blue-300"
+                        >
+                            {t('sub_multihead_h1')}
+                        </Link>
+                    </li>
+                    <li>
+                        <Link
+                            to="/attention/kv-cache"
+                            className="text-blue-700 hover:underline dark:text-blue-300"
+                        >
+                            {t('sub_kvcache_h1')}
+                        </Link>
+                    </li>
+                </ul>
             </div>
         </article>
     );
