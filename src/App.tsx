@@ -1,4 +1,4 @@
-import { BrowserRouter } from 'react-router';
+import { HashRouter } from 'react-router';
 
 import { ServicesProvider } from './services/provider/ServicesProvider.tsx';
 import { injectedServices } from './services/injection/injectedServices.ts';
@@ -8,7 +8,7 @@ import { ToastProvider } from './common';
 
 function App() {
     return (
-        <BrowserRouter basename="/llms-explained">
+        <HashRouter>
             <ServicesProvider services={injectedServices}>
                 <GlobalStateContextProvider>
                     <ToastProvider>
@@ -16,7 +16,7 @@ function App() {
                     </ToastProvider>
                 </GlobalStateContextProvider>
             </ServicesProvider>
-        </BrowserRouter>
+        </HashRouter>
     );
 }
 
