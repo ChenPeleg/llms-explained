@@ -1,8 +1,11 @@
 import { useEffect } from 'react';
 import { useService } from '../services/provider/useService';
 import { TranslationService } from '../services/Translation.service';
+import { LocalStorageService } from '../services/LocalStorage.service';
 import { useGlobalState } from '../stores/GlobalState';
 import { Language } from '../models/Language';
+
+const LANGUAGE_STORAGE_KEY = 'app-language';
 
 /**
  * Helper function to get document direction based on language
@@ -21,25 +24,40 @@ const getDirectionForLanguage = (language: Language): 'rtl' | 'ltr' => {
  * - Current language
  * - setLanguage method to switch languages
  * - Automatically sets document direction (rtl for Hebrew/Arabic, ltr for English)
+ * - Persists the chosen language to localStorage
  * - Access to translation service for getting available languages
  *
  * @returns Object containing language, setLanguage method, and available languages
  */
 export const useLanguage = () => {
-    const translationService = useService(TranslationService);
+    const [translationService, localStorageService] = useService([
+        TranslationService,
+        LocalStorageService,
+    ]);
     const { globalState, setLanguage: setGlobalLanguage } = useGlobalState();
 
     const currentLanguage: Language = globalState.language;
 
+    // Hydrate language from localStorage on mount
+    useEffect(() => {
+        const stored = localStorageService.getItem(LANGUAGE_STORAGE_KEY);
+        if (stored && (Object.values(Language) as string[]).includes(stored)) {
+            setGlobalLanguage(stored as Language);
+        }
+        // Intentionally run only on mount to load persisted preference
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
     /**
-     * Set the language and update document direction
+     * Set the language, update document direction, and persist to localStorage
      * @param language - The language to switch to
      */
     const setLanguage = (language: Language) => {
         setGlobalLanguage(language);
+        localStorageService.setItem(LANGUAGE_STORAGE_KEY, language);
     };
 
-    // Set initial document direction on mount or when language changes
+    // Apply dir/lang attributes on <html> when language changes
     useEffect(() => {
         const direction = getDirectionForLanguage(currentLanguage);
         document.documentElement.dir = direction;

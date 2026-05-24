@@ -1,22 +1,24 @@
 import { NavLink } from 'react-router';
-
-const NAV_LINKS = [
-    { to: '/', label: 'Home', emoji: '🏠', end: true },
-    { to: '/tokenization', label: 'Tokenization', emoji: '✂️' },
-    { to: '/embeddings', label: 'Embeddings', emoji: '🔢' },
-    { to: '/transformer', label: 'Transformer', emoji: '🏗️' },
-    { to: '/attention', label: 'Attention', emoji: '👁️' },
-    { to: '/training', label: 'Training', emoji: '🎯' },
-    { to: '/inference', label: 'Inference', emoji: '⚡' },
-    { to: '/scaling', label: 'Scaling Laws', emoji: '📈' },
-    { to: '/finetuning', label: 'Fine-Tuning & RLHF', emoji: '🎛️' },
-];
+import { useTranslate } from '../hooks/useTranslate';
 
 /**
  * Sidebar Component
  * Persistent left-side navigation for desktop screens
  */
 const Sidebar = () => {
+    const { t } = useTranslate();
+
+    const NAV_LINKS = [
+        { to: '/', label: t('nav_home'), emoji: '🏠', end: true },
+        { to: '/tokenization', label: t('nav_tokenization'), emoji: '✂️' },
+        { to: '/embeddings', label: t('nav_embeddings'), emoji: '🔢' },
+        { to: '/transformer', label: t('nav_transformer'), emoji: '🏗️' },
+        { to: '/attention', label: t('nav_attention'), emoji: '👁️' },
+        { to: '/training', label: t('nav_training'), emoji: '🎯' },
+        { to: '/inference', label: t('nav_inference'), emoji: '⚡' },
+        { to: '/scaling', label: t('nav_scaling'), emoji: '📈' },
+        { to: '/finetuning', label: t('nav_finetuning'), emoji: '🎛️' },
+    ];
     return (
         <aside className="hidden w-56 shrink-0 lg:block">
             <nav
