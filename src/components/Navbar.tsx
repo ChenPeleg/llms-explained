@@ -1,18 +1,8 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router';
 import { useTheme } from '../hooks/useTheme';
-
-const NAV_LINKS = [
-    { to: '/', label: 'Home', end: true },
-    { to: '/tokenization', label: 'Tokenization' },
-    { to: '/embeddings', label: 'Embeddings' },
-    { to: '/transformer', label: 'Transformer' },
-    { to: '/attention', label: 'Attention' },
-    { to: '/training', label: 'Training' },
-    { to: '/inference', label: 'Inference' },
-    { to: '/scaling', label: 'Scaling Laws' },
-    { to: '/finetuning', label: 'Fine-Tuning' },
-];
+import { useTranslate } from '../hooks/useTranslate';
+import LanguageSwitcher from './LanguageSwitcher';
 
 /** Sun icon — shown in dark mode to switch back to light */
 const SunIcon = () => (
@@ -86,7 +76,20 @@ const MenuIcon = ({ open }: { open: boolean }) =>
  */
 const Navbar = () => {
     const { theme, setTheme } = useTheme();
+    const { t } = useTranslate();
     const [mobileOpen, setMobileOpen] = useState(false);
+
+    const NAV_LINKS = [
+        { to: '/', label: t('nav_home'), end: true },
+        { to: '/tokenization', label: t('nav_tokenization') },
+        { to: '/embeddings', label: t('nav_embeddings') },
+        { to: '/transformer', label: t('nav_transformer') },
+        { to: '/attention', label: t('nav_attention') },
+        { to: '/training', label: t('nav_training') },
+        { to: '/inference', label: t('nav_inference') },
+        { to: '/scaling', label: t('nav_scaling') },
+        { to: '/finetuning', label: t('nav_finetuning') },
+    ];
 
     const linkClass = ({ isActive }: { isActive: boolean }) =>
         isActive
@@ -102,7 +105,7 @@ const Navbar = () => {
                         to="/"
                         className="text-xl font-bold text-gray-900 hover:text-blue-600 dark:text-gray-100 dark:hover:text-blue-400"
                     >
-                        LLMs Explained
+                        {t('app_title')}
                     </NavLink>
 
                     {/* Desktop nav */}
@@ -123,12 +126,13 @@ const Navbar = () => {
 
                     {/* Right controls */}
                     <div className="flex items-center gap-2">
+                        <LanguageSwitcher />
                         <button
                             type="button"
                             onClick={() =>
                                 setTheme(theme === 'dark' ? 'light' : 'dark')
                             }
-                            aria-label="Toggle dark mode"
+                            aria-label={t('dark_mode_toggle')}
                             className="rounded-md p-2 text-gray-600 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
                         >
                             {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
