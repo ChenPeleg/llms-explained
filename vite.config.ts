@@ -3,19 +3,10 @@ import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
+    base: '/llms-explained/',
     plugins: [react(), tailwindcss()],
     server: {
         port: 3000,
-        proxy: {
-            '/authentication': {
-                target: 'http://localhost:8000',
-                changeOrigin: true,
-            },
-            '/api': {
-                target: 'http://localhost:8000',
-                changeOrigin: true,
-            },
-        },
     },
 
     define: {

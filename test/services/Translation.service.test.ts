@@ -16,26 +16,26 @@ describe('Translation service', () => {
     describe('t (translate)', () => {
         it('should return the English translation for a known key', () => {
             // When
-            const result = service.t('ברכה_שלום', Language.English);
+            const result = service.t('app_title', Language.English);
 
             // Then
-            expect(result).toBe('Hello');
+            expect(result).toBe('LLMs Explained');
         });
 
         it('should return the Hebrew translation for a known key', () => {
             // When
-            const result = service.t('ברכה_שלום', Language.Hebrew);
+            const result = service.t('app_title', Language.Hebrew);
 
             // Then
-            expect(result).toBe('שלום');
+            expect(result).toBe('LLMs מוסבר');
         });
 
         it('should return the Arabic translation for a known key', () => {
             // When
-            const result = service.t('ברכה_שלום', Language.Arabic);
+            const result = service.t('dark_mode_toggle', Language.Arabic);
 
             // Then
-            expect(result).toBe('مرحبا');
+            expect(result).toBe('تبديل الوضع الداكن');
         });
 
         it('should return the key itself when the translation key does not exist', () => {
@@ -49,9 +49,9 @@ describe('Translation service', () => {
 
     describe('hasTranslation', () => {
         it('should return true for a key that exists in the given language', () => {
-            expect(service.hasTranslation('ברכה_שלום', Language.English)).toBe(true);
-            expect(service.hasTranslation('ברכה_שלום', Language.Hebrew)).toBe(true);
-            expect(service.hasTranslation('ברכה_שלום', Language.Arabic)).toBe(true);
+            expect(service.hasTranslation('app_title', Language.English)).toBe(true);
+            expect(service.hasTranslation('app_title', Language.Hebrew)).toBe(true);
+            expect(service.hasTranslation('app_title', Language.Arabic)).toBe(true);
         });
 
         it('should return false for a key that does not exist', () => {

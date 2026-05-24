@@ -1,0 +1,17 @@
+[
+  { "word": "king",   "x": 0.82, "y": 0.35, "cluster": 0 },
+  { "word": "queen",  "x": 0.79, "y": 0.62, "cluster": 0 },
+  { "word": "prince", "x": 0.70, "y": 0.30, "cluster": 0 },
+  { "word": "man",    "x": 0.55, "y": 0.25, "cluster": 1 },
+  { "word": "woman",  "x": 0.52, "y": 0.58, "cluster": 1 },
+  { "word": "boy",    "x": 0.45, "y": 0.22, "cluster": 1 },
+  { "word": "girl",   "x": 0.43, "y": 0.55, "cluster": 1 },
+  { "word": "dog",    "x": 0.18, "y": 0.40, "cluster": 2 },
+  { "word": "cat",    "x": 0.20, "y": 0.55, "cluster": 2 },
+  { "word": "puppy",  "x": 0.12, "y": 0.38, "cluster": 2 },
+  { "word": "kitten", "x": 0.15, "y": 0.60, "cluster": 2 },
+  { "word": "Paris",  "x": 0.50, "y": 0.88, "cluster": 3 },
+  { "word": "London", "x": 0.58, "y": 0.85, "cluster": 3 },
+  { "word": "Tokyo",  "x": 0.65, "y": 0.82, "cluster": 3 },
+  { "word": "Rome",   "x": 0.42, "y": 0.90, "cluster": 3 }
+]

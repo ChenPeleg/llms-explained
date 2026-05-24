@@ -3,12 +3,10 @@ import { LocalStorageService } from '../LocalStorage.service.ts';
 import { LoggingService } from '../Logging.service.ts';
 import { VersionService } from '../Version.service.ts';
 import { TranslationService } from '../Translation.service.ts';
-import { FormsDataService } from '../FormsData.service.ts';
 import { ExceptionService } from '../Exception.service.ts';
 import { WindowService } from '../Window.service.ts';
 
 export const injectedServices: ServiceInjectionMethod[] = [
-    FormsDataService,
     TranslationService,
     LocalStorageService,
     LoggingService,

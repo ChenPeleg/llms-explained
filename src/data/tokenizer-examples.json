@@ -1,0 +1,41 @@
+[
+  {
+    "id": "hello-world",
+    "text": "Hello, world!",
+    "tokens": [
+      { "id": 9906, "text": "Hello", "color": 0 },
+      { "id": 11, "text": ",", "color": 1 },
+      { "id": 995, "text": " world", "color": 2 },
+      { "id": 0, "text": "!", "color": 3 }
+    ]
+  },
+  {
+    "id": "transformer",
+    "text": "The transformer architecture changed everything.",
+    "tokens": [
+      { "id": 791, "text": "The", "color": 0 },
+      { "id": 43426, "text": " transformer", "color": 1 },
+      { "id": 9473, "text": " architecture", "color": 2 },
+      { "id": 5614, "text": " changed", "color": 3 },
+      { "id": 4395, "text": " everything", "color": 4 },
+      { "id": 13, "text": ".", "color": 5 }
+    ]
+  },
+  {
+    "id": "tokenization",
+    "text": "tokenization",
+    "tokens": [
+      { "id": 4037, "text": "token", "color": 0 },
+      { "id": 1634, "text": "ization", "color": 1 }
+    ]
+  },
+  {
+    "id": "unbelievably",
+    "text": "unbelievably",
+    "tokens": [
+      { "id": 359, "text": "un", "color": 0 },
+      { "id": 47679, "text": "belie", "color": 1 },
+      { "id": 3526, "text": "vably", "color": 2 }
+    ]
+  }
+]
