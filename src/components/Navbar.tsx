@@ -1,18 +1,18 @@
-import { useNavigate } from 'react-router';
-import { useTranslate } from '../hooks/useTranslate';
-import { useLanguage } from '../hooks/useLanguage';
+import { useState } from 'react';
+import { NavLink } from 'react-router';
 import { useTheme } from '../hooks/useTheme';
-import { Language } from '../models/Language';
-import { AppButton, AppSelect } from '../common';
 
-/**
- * Mapping of language codes to their translation keys
- */
-const LANGUAGE_NAME_KEYS: Record<Language, string> = {
-    [Language.Hebrew]: 'שפה_עברית',
-    [Language.English]: 'שפה_אנגלית',
-    [Language.Arabic]: 'שפה_ערבית',
-};
+const NAV_LINKS = [
+    { to: '/', label: 'Home', end: true },
+    { to: '/tokenization', label: 'Tokenization' },
+    { to: '/embeddings', label: 'Embeddings' },
+    { to: '/transformer', label: 'Transformer' },
+    { to: '/attention', label: 'Attention' },
+    { to: '/training', label: 'Training' },
+    { to: '/inference', label: 'Inference' },
+    { to: '/scaling', label: 'Scaling Laws' },
+    { to: '/finetuning', label: 'Fine-Tuning' },
+];
 
 /** Sun icon — shown in dark mode to switch back to light */
 const SunIcon = () => (
@@ -44,77 +44,138 @@ const MoonIcon = () => (
     </svg>
 );
 
+/** Hamburger / close icon for mobile menu */
+const MenuIcon = ({ open }: { open: boolean }) =>
+    open ? (
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            aria-hidden="true"
+        >
+            <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M6 18L18 6M6 6l12 12"
+            />
+        </svg>
+    ) : (
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            aria-hidden="true"
+        >
+            <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 6h16M4 12h16M4 18h16"
+            />
+        </svg>
+    );
+
 /**
  * Navbar Component
- * Displayed on all routes with navigation controls
+ * Top navigation bar with mobile hamburger menu and dark mode toggle
  */
 const Navbar = () => {
-    const navigate = useNavigate();
-    const { t } = useTranslate();
-    const { language, setLanguage, availableLanguages } = useLanguage();
     const { theme, setTheme } = useTheme();
+    const [mobileOpen, setMobileOpen] = useState(false);
+
+    const linkClass = ({ isActive }: { isActive: boolean }) =>
+        isActive
+            ? 'text-blue-600 dark:text-blue-400 font-semibold'
+            : 'text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-colors';
 
     return (
-        <header className="bg-white shadow-sm dark:bg-gray-900 dark:shadow-gray-700">
-            <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
-                <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-4">
-                        <AppButton
-                            type="button"
-                            variant="link"
-                            size="lg"
-                            className="text-2xl font-bold text-gray-900 hover:text-blue-600 dark:text-gray-100 dark:hover:text-blue-400"
-                            onClick={() => navigate('/')}
-                        >
-                            {t('כותרת_אפליקציה')}
-                        </AppButton>
-                    </div>
-                    <div className="flex items-center gap-3">
-                        <AppButton
-                            type="button"
-                            variant="secondary"
-                            onClick={() => navigate('/')}
-                        >
-                            {t('ניווט_בית')}
-                        </AppButton>
-                        <AppButton
-                            type="button"
-                            onClick={() => navigate('/forms/new')}
-                        >
-                            {t('כפתור_טופס_חדש')}
-                        </AppButton>
+        <header className="sticky top-0 z-50 bg-white shadow-sm dark:bg-gray-900 dark:shadow-gray-700">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div className="flex h-14 items-center justify-between">
+                    {/* Logo */}
+                    <NavLink
+                        to="/"
+                        className="text-xl font-bold text-gray-900 hover:text-blue-600 dark:text-gray-100 dark:hover:text-blue-400"
+                    >
+                        LLMs Explained
+                    </NavLink>
 
-                        {/* Language Switcher */}
-                        <div className="min-w-36">
-                            <AppSelect
-                                id="language"
-                                value={language}
-                                onChange={(value) =>
-                                    setLanguage(value as Language)
-                                }
-                                options={availableLanguages.map((lang) => ({
-                                    value: lang,
-                                    label: t(LANGUAGE_NAME_KEYS[lang]),
-                                }))}
-                            />
-                        </div>
+                    {/* Desktop nav */}
+                    <nav
+                        className="hidden items-center gap-5 lg:flex"
+                        aria-label="Main navigation"
+                    >
+                        {NAV_LINKS.slice(1).map((link) => (
+                            <NavLink
+                                key={link.to}
+                                to={link.to}
+                                className={linkClass}
+                            >
+                                {link.label}
+                            </NavLink>
+                        ))}
+                    </nav>
 
-                        {/* Dark Mode Toggle */}
-                        <AppButton
+                    {/* Right controls */}
+                    <div className="flex items-center gap-2">
+                        <button
                             type="button"
-                            variant="ghost"
-                            size="sm"
                             onClick={() =>
                                 setTheme(theme === 'dark' ? 'light' : 'dark')
                             }
-                            aria-label={t('dark_mode_toggle')}
-                            className="h-9 w-9 p-0 text-gray-600 hover:bg-gray-100 focus-visible:ring-blue-500 dark:text-gray-300 dark:hover:bg-gray-700"
+                            aria-label="Toggle dark mode"
+                            className="rounded-md p-2 text-gray-600 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
                         >
                             {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
-                        </AppButton>
+                        </button>
+
+                        {/* Mobile menu button */}
+                        <button
+                            type="button"
+                            className="rounded-md p-2 text-gray-600 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 lg:hidden"
+                            onClick={() => setMobileOpen((o) => !o)}
+                            aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+                            aria-expanded={mobileOpen}
+                        >
+                            <MenuIcon open={mobileOpen} />
+                        </button>
                     </div>
                 </div>
             </div>
+
+            {/* Mobile dropdown */}
+            {mobileOpen && (
+                <nav
+                    className="border-t border-gray-200 bg-white px-4 py-3 dark:border-gray-700 dark:bg-gray-900 lg:hidden"
+                    aria-label="Mobile navigation"
+                >
+                    <ul className="space-y-2">
+                        {NAV_LINKS.map((link) => (
+                            <li key={link.to}>
+                                <NavLink
+                                    to={link.to}
+                                    end={link.end}
+                                    className={({ isActive }) =>
+                                        `block rounded-md px-3 py-2 text-sm ${
+                                            isActive
+                                                ? 'bg-blue-50 text-blue-600 font-semibold dark:bg-blue-900/30 dark:text-blue-400'
+                                                : 'text-gray-700 hover:bg-gray-50 dark:text-gray-300 dark:hover:bg-gray-800'
+                                        }`
+                                    }
+                                    onClick={() => setMobileOpen(false)}
+                                >
+                                    {link.label}
+                                </NavLink>
+                            </li>
+                        ))}
+                    </ul>
+                </nav>
+            )}
         </header>
     );
 };

@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { ServicesProviderContext } from '../services/provider/ServicesProvider';
-import type { FormsDataService } from '../services/FormsData.service';
+import { FormsDataService } from '../services/FormsData.service';
 
 /**
  * Hook to access FormsDataService
@@ -15,5 +15,5 @@ export const useFormsDataService = (): FormsDataService => {
             'useFormsDataService must be used within a ServicesProvider'
         );
     }
-    return servicesResolver.formsDataService;
+    return servicesResolver.getService(FormsDataService);
 };

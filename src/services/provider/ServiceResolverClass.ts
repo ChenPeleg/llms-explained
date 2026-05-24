@@ -1,6 +1,5 @@
 import { AbstractBaseService } from './AbstractBaseService';
 import { LocalStorageService } from '../LocalStorage.service.ts';
-import { FormsDataService } from '../FormsData.service.ts';
 import { LoggingService } from '../Logging.service.ts';
 import { VersionService } from '../Version.service.ts';
 import { TranslationService } from '../Translation.service.ts';
@@ -71,10 +70,6 @@ export class ServicesResolver {
     // Convenience getters for commonly used services
     get localStorageService(): LocalStorageService {
         return this.getService(LocalStorageService);
-    }
-
-    get formsDataService(): FormsDataService {
-        return this.getService(FormsDataService);
     }
 
     get loggingService(): LoggingService {

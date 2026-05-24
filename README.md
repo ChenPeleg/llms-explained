@@ -1,83 +1,47 @@
-# React + TypeScript + Vite
+# LLMs Explained
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A frontend-only educational app about Large Language Models, deployed to GitHub Pages.
 
-Currently, two official plugins are available:
+## About
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+This app helps developers and technically curious people understand how LLMs work under the hood. Topics covered include:
 
-## React Compiler
+- **Tokenization** — how text is split into tokens; BPE, WordPiece
+- **Embeddings** — turning tokens into vectors; semantic space
+- **Transformer Architecture** — encoder/decoder, residual connections, layer norm
+- **Attention Mechanism** — self-attention, multi-head attention, scaled dot-product
+- **Training** — pre-training objectives, loss, backprop at a high level
+- **Inference & Sampling** — temperature, top-k, top-p, greedy decoding
+- **Scaling Laws** — Chinchilla, compute-optimal training
+- **Fine-Tuning & RLHF** — SFT, reward models, PPO
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Live App
 
-## Expanding the ESLint configuration
+[https://chenpeleg.github.io/llms-explained/](https://chenpeleg.github.io/llms-explained/)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-    globalIgnores(['dist']),
-    {
-        files: ['**/*.{ts,tsx}'],
-        extends: [
-            // Other configs...
-
-            // Remove tseslint.configs.recommended and replace with this
-            tseslint.configs.recommendedTypeChecked,
-            // Alternatively, use this for stricter rules
-            tseslint.configs.strictTypeChecked,
-            // Optionally, add this for stylistic rules
-            tseslint.configs.stylisticTypeChecked,
-
-            // Other configs...
-        ],
-        languageOptions: {
-            parserOptions: {
-                project: ['./tsconfig.node.json', './tsconfig.app.json'],
-                tsconfigRootDir: import.meta.dirname,
-            },
-            // other options...
-        },
-    },
-]);
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x';
-import reactDom from 'eslint-plugin-react-dom';
-
-export default defineConfig([
-    globalIgnores(['dist']),
-    {
-        files: ['**/*.{ts,tsx}'],
-        extends: [
-            // Other configs...
-            // Enable lint rules for React
-            reactX.configs['recommended-typescript'],
-            // Enable lint rules for React DOM
-            reactDom.configs.recommended,
-        ],
-        languageOptions: {
-            parserOptions: {
-                project: ['./tsconfig.node.json', './tsconfig.app.json'],
-                tsconfigRootDir: import.meta.dirname,
-            },
-            // other options...
-        },
-    },
-]);
-```
-
-## Runing backend for local development
-
-run the following command in the terminal to start the backend server:
+## Development
 
 ```bash
-docker compose up --build -d
+npm install
+npm run dev
 ```
 
-then the backoffice (django admin) will be available at http://localhost:8000/admin/ and the API will be available at http://localhost:8000/api/
+## Build
+
+```bash
+npm run build
+```
+
+## Test
+
+```bash
+npm run test
+npm run lint
+npm run typecheck
+```
+
+## Storybook
+
+```bash
+npm run storybook
+```

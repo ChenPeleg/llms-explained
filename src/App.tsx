@@ -8,7 +8,7 @@ import { ToastProvider } from './common';
 
 function App() {
     return (
-        <BrowserRouter>
+        <BrowserRouter basename="/llms-explained">
             <ServicesProvider services={injectedServices}>
                 <GlobalStateContextProvider>
                     <ToastProvider>
