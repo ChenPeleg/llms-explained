@@ -4,7 +4,7 @@ import { Language } from '../models/Language';
 const LANGUAGE_LABELS: Record<Language, string> = {
     [Language.English]: 'EN',
     [Language.Hebrew]: 'עב',
-    [Language.Arabic]: 'ع',
+    [Language.Arabic]: 'عر',
 };
 
 /**

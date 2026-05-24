@@ -41,12 +41,8 @@ export const useLanguage = () => {
     // Hydrate language from localStorage on mount
     useEffect(() => {
         const stored = localStorageService.getItem(LANGUAGE_STORAGE_KEY);
-        if (
-            stored === Language.English ||
-            stored === Language.Hebrew ||
-            stored === Language.Arabic
-        ) {
-            setGlobalLanguage(stored);
+        if (stored && (Object.values(Language) as string[]).includes(stored)) {
+            setGlobalLanguage(stored as Language);
         }
         // Intentionally run only on mount to load persisted preference
         // eslint-disable-next-line react-hooks/exhaustive-deps
