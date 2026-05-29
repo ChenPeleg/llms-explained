@@ -1,3 +1,4 @@
+import { Link } from 'react-router';
 import { useTranslate } from '../hooks/useTranslate';
 
 /**
@@ -8,7 +9,7 @@ const TrainingPage = () => {
     const { t } = useTranslate();
 
     return (
-        <article className="prose prose-gray max-w-none dark:prose-invert">
+        <article className="prose prose-gray dark:prose-invert max-w-none">
             <h1>{t('train_h1')}</h1>
 
             <p>{t('train_intro')}</p>
@@ -32,16 +33,20 @@ const TrainingPage = () => {
             <p>{t('train_loss_p')}</p>
             <ul>
                 <li>
-                    <strong>{t('train_adam_label')}</strong> — {t('train_adam_desc')}
+                    <strong>{t('train_adam_label')}</strong> —{' '}
+                    {t('train_adam_desc')}
                 </li>
                 <li>
-                    <strong>{t('train_lr_label')}</strong> — {t('train_lr_desc')}
+                    <strong>{t('train_lr_label')}</strong> —{' '}
+                    {t('train_lr_desc')}
                 </li>
                 <li>
-                    <strong>{t('train_clip_label')}</strong> — {t('train_clip_desc')}
+                    <strong>{t('train_clip_label')}</strong> —{' '}
+                    {t('train_clip_desc')}
                 </li>
                 <li>
-                    <strong>{t('train_mixed_label')}</strong> — {t('train_mixed_desc')}
+                    <strong>{t('train_mixed_label')}</strong> —{' '}
+                    {t('train_mixed_desc')}
                 </li>
             </ul>
 
@@ -56,6 +61,38 @@ const TrainingPage = () => {
                 <li>{t('train_data_li3')}</li>
                 <li>{t('train_data_li4')}</li>
             </ol>
+
+            <div className="not-prose mt-8 rounded-xl border border-blue-100 bg-blue-50 p-6 dark:border-blue-900/30 dark:bg-blue-900/10">
+                <h2 className="mb-3 text-lg font-semibold text-blue-900 dark:text-blue-200">
+                    {t('dive_deeper')}
+                </h2>
+                <ul className="space-y-2">
+                    <li>
+                        <Link
+                            to="/training/next-token"
+                            className="text-blue-700 hover:underline dark:text-blue-300"
+                        >
+                            {t('sub_nexttoken_h1')}
+                        </Link>
+                    </li>
+                    <li>
+                        <Link
+                            to="/training/masked-lm"
+                            className="text-blue-700 hover:underline dark:text-blue-300"
+                        >
+                            {t('sub_maskedlm_h1')}
+                        </Link>
+                    </li>
+                    <li>
+                        <Link
+                            to="/training/loss"
+                            className="text-blue-700 hover:underline dark:text-blue-300"
+                        >
+                            {t('sub_loss_h1')}
+                        </Link>
+                    </li>
+                </ul>
+            </div>
         </article>
     );
 };
