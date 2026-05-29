@@ -40,6 +40,15 @@ const EmbeddingsPage = () => {
             <h2>{t('emb_h2_onehot')}</h2>
             <p>{t('emb_onehot_p')}</p>
 
+            <h2>{t('emb_h2_examples')}</h2>
+            <p>{t('emb_examples_intro')}</p>
+            <ul>
+                <li>{t('emb_example_synonyms')}</li>
+                <li>{t('emb_example_analogy')}</li>
+                <li>{t('emb_example_domain')}</li>
+                <li>{t('emb_example_composition')}</li>
+            </ul>
+
             <h2>{t('emb_h2_semantic')}</h2>
             <p>{t('emb_semantic_p')}</p>
             <blockquote>
@@ -49,6 +58,13 @@ const EmbeddingsPage = () => {
 
             <h2>{t('emb_h2_positional')}</h2>
             <p>{t('emb_positional_p')}</p>
+            <p>
+                {t('emb_positional_attention_bridge')}{' '}
+                <Link to="/attention" className="font-medium underline">
+                    {t('att_h1')}
+                </Link>
+                .
+            </p>
             <ul>
                 <li>
                     <strong>{t('emb_pos_sinusoidal_label')}</strong>{' '}
