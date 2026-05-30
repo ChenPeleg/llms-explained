@@ -56,6 +56,113 @@ const EmbeddingsPage = () => {
             </blockquote>
             <p>{t('emb_direction_p')}</p>
 
+            <h2>{t('emb_h2_worked')}</h2>
+            <p>{t('emb_worked_intro')}</p>
+            <div className="not-prose my-4 overflow-x-auto rounded-lg border border-gray-200 dark:border-gray-700">
+                <table className="w-full text-sm">
+                    <thead className="bg-gray-50 dark:bg-gray-800">
+                        <tr>
+                            <th className="px-4 py-2 text-left font-semibold text-gray-700 dark:text-gray-200">
+                                {t('emb_worked_word')}
+                            </th>
+                            <th className="px-4 py-2 text-left font-semibold text-gray-700 dark:text-gray-200">
+                                {t('emb_worked_vector')}
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody className="divide-y divide-gray-100 dark:divide-gray-800">
+                        <tr>
+                            <td className="px-4 py-2 font-medium">king</td>
+                            <td className="px-4 py-2 font-mono">
+                                (0.9, 0.1, 0.0)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td className="px-4 py-2 font-medium">queen</td>
+                            <td className="px-4 py-2 font-mono">
+                                (0.9, 0.9, 0.0)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td className="px-4 py-2 font-medium">man</td>
+                            <td className="px-4 py-2 font-mono">
+                                (0.1, 0.05, 0.0)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td className="px-4 py-2 font-medium">woman</td>
+                            <td className="px-4 py-2 font-mono">
+                                (0.1, 0.9, 0.0)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td className="px-4 py-2 font-medium">dog</td>
+                            <td className="px-4 py-2 font-mono">
+                                (0.0, 0.1, 0.95)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td className="px-4 py-2 font-medium">cat</td>
+                            <td className="px-4 py-2 font-mono">
+                                (0.0, 0.2, 0.9)
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p className="text-sm text-gray-500 dark:text-gray-400">
+                {t('emb_worked_caption')}
+            </p>
+            <p>{t('emb_worked_followup')}</p>
+
+            <h2>{t('emb_h2_similarity')}</h2>
+            <p>{t('emb_similarity_intro')}</p>
+            <blockquote>
+                <code>{t('emb_similarity_formula')}</code>
+            </blockquote>
+            <p>{t('emb_similarity_values')}</p>
+            <p>{t('emb_similarity_examples_intro')}</p>
+            <ul>
+                <li>{t('emb_sim_example_high')}</li>
+                <li>{t('emb_sim_example_mid')}</li>
+                <li>{t('emb_sim_example_low')}</li>
+            </ul>
+
+            <h2>{t('emb_h2_learned')}</h2>
+            <p>{t('emb_learned_p')}</p>
+            <p>{t('emb_learned_steps_intro')}</p>
+            <ol>
+                <li>{t('emb_learned_step_lookup')}</li>
+                <li>{t('emb_learned_step_forward')}</li>
+                <li>{t('emb_learned_step_loss')}</li>
+                <li>{t('emb_learned_step_update')}</li>
+            </ol>
+
+            <h2>{t('emb_h2_lifecycle')}</h2>
+            <p>{t('emb_lifecycle_p')}</p>
+            <ul>
+                <li>
+                    <strong>{t('emb_life_input_label')}</strong> —{' '}
+                    {t('emb_life_input_desc')}
+                </li>
+                <li>
+                    <strong>{t('emb_life_hidden_label')}</strong> —{' '}
+                    {t('emb_life_hidden_desc')}
+                </li>
+                <li>
+                    <strong>{t('emb_life_output_label')}</strong> —{' '}
+                    {t('emb_life_output_desc')}
+                </li>
+            </ul>
+
+            <h2>{t('emb_h2_pitfalls')}</h2>
+            <p>{t('emb_pitfalls_intro')}</p>
+            <ul>
+                <li>{t('emb_pitfall_bias')}</li>
+                <li>{t('emb_pitfall_polysemy')}</li>
+                <li>{t('emb_pitfall_oov')}</li>
+            </ul>
+
             <h2>{t('emb_h2_positional')}</h2>
             <p>{t('emb_positional_p')}</p>
             <p>
