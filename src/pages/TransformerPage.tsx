@@ -16,6 +16,23 @@ const TransformerPage = () => {
 
             <p>{t('tr_intro')}</p>
 
+            <h2>{t('tr_h2_why')}</h2>
+            <p>{t('tr_why_p')}</p>
+            <ul>
+                <li>
+                    <strong>{t('tr_why_parallel_label')}</strong> —{' '}
+                    {t('tr_why_parallel_desc')}
+                </li>
+                <li>
+                    <strong>{t('tr_why_longrange_label')}</strong> —{' '}
+                    {t('tr_why_longrange_desc')}
+                </li>
+                <li>
+                    <strong>{t('tr_why_transfer_label')}</strong> —{' '}
+                    {t('tr_why_transfer_desc')}
+                </li>
+            </ul>
+
             <h2>{t('tr_h2_enc_dec')}</h2>
             <p>{t('tr_enc_dec_intro')}</p>
             <ul>
@@ -57,6 +74,59 @@ const TransformerPage = () => {
 
             <h2>{t('tr_h2_layernorm')}</h2>
             <p>{t('tr_layernorm_p')}</p>
+
+            <h2>{t('tr_h2_walkthrough')}</h2>
+            <p>{t('tr_walkthrough_intro')}</p>
+            <ol>
+                <li>
+                    <strong>{t('tr_walk_step1_label')}</strong> —{' '}
+                    {t('tr_walk_step1_desc')}
+                </li>
+                <li>
+                    <strong>{t('tr_walk_step2_label')}</strong> —{' '}
+                    {t('tr_walk_step2_desc')}
+                </li>
+                <li>
+                    <strong>{t('tr_walk_step3_label')}</strong> —{' '}
+                    {t('tr_walk_step3_desc')}
+                </li>
+                <li>
+                    <strong>{t('tr_walk_step4_label')}</strong> —{' '}
+                    {t('tr_walk_step4_desc')}
+                </li>
+                <li>
+                    <strong>{t('tr_walk_step5_label')}</strong> —{' '}
+                    {t('tr_walk_step5_desc')}
+                </li>
+            </ol>
+            <p>{t('tr_walk_followup')}</p>
+
+            <h2>{t('tr_h2_choose')}</h2>
+            <p>{t('tr_choose_intro')}</p>
+            <ul>
+                <li>
+                    <strong>{t('tr_choose_encoder_label')}</strong> —{' '}
+                    {t('tr_choose_encoder_desc')}
+                </li>
+                <li>
+                    <strong>{t('tr_choose_decoder_label')}</strong> —{' '}
+                    {t('tr_choose_decoder_desc')}
+                </li>
+                <li>
+                    <strong>{t('tr_choose_encdec_label')}</strong> —{' '}
+                    {t('tr_choose_encdec_desc')}
+                </li>
+            </ul>
+
+            <h2>{t('tr_h2_variants')}</h2>
+            <p>{t('tr_variants_intro')}</p>
+            <ul>
+                <li>{t('tr_variant_prenorm')}</li>
+                <li>{t('tr_variant_rope')}</li>
+                <li>{t('tr_variant_gqa')}</li>
+                <li>{t('tr_variant_swiglu')}</li>
+                <li>{t('tr_variant_moe')}</li>
+            </ul>
 
             <h2>{t('tr_h2_scale')}</h2>
             <ul>
