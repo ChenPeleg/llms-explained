@@ -8,9 +8,10 @@ import TrainingPage from './pages/TrainingPage';
 import InferencePage from './pages/InferencePage';
 import ScalingLawsPage from './pages/ScalingLawsPage';
 import FineTuningPage from './pages/FineTuningPage';
-import TikTokenPage from './pages/tokenization/TikTokenPage';
-import WordPiecePage from './pages/tokenization/WordPiecePage';
-import SentencePiecePage from './pages/tokenization/SentencePiecePage';
+import SubwordAlgorithmsPage from './pages/tokenization/SubwordAlgorithmsPage';
+import RealModelTokenizersPage from './pages/tokenization/RealModelTokenizersPage';
+import MultilingualEdgeCasesPage from './pages/tokenization/MultilingualEdgeCasesPage';
+import PromptEngineeringImplicationsPage from './pages/tokenization/PromptEngineeringImplicationsPage';
 import Word2VecPage from './pages/embeddings/Word2VecPage';
 import PositionalEncodingsPage from './pages/embeddings/PositionalEncodingsPage';
 import EncoderPage from './pages/transformer/EncoderPage';
@@ -39,11 +40,21 @@ export function AppRoutes() {
                 <Route path="/" element={<HomePage />} />
                 <Route path="/tokenization">
                     <Route index element={<TokenizationPage />} />
-                    <Route path="tiktoken" element={<TikTokenPage />} />
-                    <Route path="wordpiece" element={<WordPiecePage />} />
                     <Route
-                        path="sentencepiece"
-                        element={<SentencePiecePage />}
+                        path="subword-algorithms"
+                        element={<SubwordAlgorithmsPage />}
+                    />
+                    <Route
+                        path="model-tokenizers"
+                        element={<RealModelTokenizersPage />}
+                    />
+                    <Route
+                        path="multilingual-edge-cases"
+                        element={<MultilingualEdgeCasesPage />}
+                    />
+                    <Route
+                        path="prompt-engineering-implications"
+                        element={<PromptEngineeringImplicationsPage />}
                     />
                 </Route>
                 <Route path="/embeddings">
