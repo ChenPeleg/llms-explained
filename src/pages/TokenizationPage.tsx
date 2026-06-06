@@ -1,5 +1,5 @@
-import { Link } from 'react-router';
 import TokenizerPlayground from '../components/TokenizerPlayground';
+import TokenizationSectionNavigation from '../components/TokenizationSectionNavigation';
 import { useTranslate } from '../hooks/useTranslate';
 
 /**
@@ -41,41 +41,22 @@ const TokenizationPage = () => {
             <h2>{t('tok_h2_practice')}</h2>
             <p>{t('tok_practice_p')}</p>
 
+            <h2>{t('tok_h2_intermediate')}</h2>
+            <p>{t('tok_intermediate_p')}</p>
+
             <div className="not-prose my-6">
                 <TokenizerPlayground />
             </div>
 
-            <div className="not-prose mt-8 rounded-xl border border-blue-100 bg-blue-50 p-6 dark:border-blue-900/30 dark:bg-blue-900/10">
-                <h2 className="mb-3 text-lg font-semibold text-blue-900 dark:text-blue-200">
-                    {t('dive_deeper')}
-                </h2>
-                <ul className="space-y-2">
-                    <li>
-                        <Link
-                            to="/tokenization/tiktoken"
-                            className="text-blue-700 hover:underline dark:text-blue-300"
-                        >
-                            {t('sub_tiktoken_h1')}
-                        </Link>
-                    </li>
-                    <li>
-                        <Link
-                            to="/tokenization/wordpiece"
-                            className="text-blue-700 hover:underline dark:text-blue-300"
-                        >
-                            {t('sub_wordpiece_h1')}
-                        </Link>
-                    </li>
-                    <li>
-                        <Link
-                            to="/tokenization/sentencepiece"
-                            className="text-blue-700 hover:underline dark:text-blue-300"
-                        >
-                            {t('sub_sentencepiece_h1')}
-                        </Link>
-                    </li>
-                </ul>
-            </div>
+            <h2>{t('tok_h2_checkpoint')}</h2>
+            <p>{t('tok_checkpoint_intro')}</p>
+            <ul>
+                <li>{t('tok_checkpoint_li1')}</li>
+                <li>{t('tok_checkpoint_li2')}</li>
+                <li>{t('tok_checkpoint_li3')}</li>
+            </ul>
+
+            <TokenizationSectionNavigation />
         </article>
     );
 };

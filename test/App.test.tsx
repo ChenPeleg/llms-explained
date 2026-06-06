@@ -35,9 +35,9 @@ describe('App', () => {
         expectPageHeading('טוקניזציה');
     });
 
-    it('renders the tiktoken sub-page at "/tokenization/tiktoken"', () => {
-        renderApp('/tokenization/tiktoken');
-        expectPageHeading('ספריית TikToken');
+    it('renders deep dive 1 at "/tokenization/subword-algorithms"', () => {
+        renderApp('/tokenization/subword-algorithms');
+        expectPageHeading('Tokenization Deep Dive 1 — אלגוריתמי תת-מילים');
     });
 
     it('renders the word2vec sub-page at "/embeddings/word2vec"', () => {
