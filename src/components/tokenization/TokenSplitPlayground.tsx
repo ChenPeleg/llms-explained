@@ -276,7 +276,10 @@ const TokenSplitPlayground = () => {
     const handleReset = useCallback(() => setText(DEFAULT_TEXT), []);
 
     return (
-        <div className="rounded-xl border border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800">
+        <div
+            dir="ltr"
+            className="rounded-xl border border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800"
+        >
             <h3 className="mb-1 text-lg font-semibold text-gray-900 dark:text-gray-100">
                 Interactive A — Token Split Playground
             </h3>
