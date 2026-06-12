@@ -1,5 +1,10 @@
 import { useState, useCallback } from 'react';
 
+/**
+ * A single educational token with display text and an illustrative ID.
+ * Note: 'id' is not a real tokenizer vocabulary ID — it is a deterministic
+ * pseudo-ID generated for educational display purposes only.
+ */
 interface Token {
     text: string;
     id: number;
@@ -192,7 +197,7 @@ function splitIntoSubwords(word: string): Token[] {
     const suffixes = [
         'ization', 'ational', 'fulness', 'iveness', 'ousness', 'ingness',
         'ations', 'nesses', 'lessly', 'ically', 'ments', 'ation', 'izing',
-        'iness', 'ation', 'ments', 'fully', 'lessly', 'isms', 'ists',
+        'iness', 'fully', 'lessly', 'isms', 'ists',
         'ance', 'ence', 'ment', 'ness', 'tion', 'sion', 'less', 'able',
         'ible', 'ical', 'ism', 'ist', 'ing', 'ion', 'ify', 'ize', 'ous',
         'ful', 'ive', 'ent', 'ant', 'ary', 'ory', 'al', 'ed', 'er', 'ly',
