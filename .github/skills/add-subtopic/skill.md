@@ -7,16 +7,16 @@ description: |
 steps:
   - title: Wire the subtopic route and navigation
     description: |
-      Add the new subtopic route in `/home/runner/work/llms-explained/llms-explained/ChenPeleg/llms-explained/src/AppRoutes.tsx`.
+      Add the new subtopic route in `src/AppRoutes.tsx`.
       Add the subtopic link key in `DEEP_DIVE_LINKS` in
-      `/home/runner/work/llms-explained/llms-explained/ChenPeleg/llms-explained/src/components/TokenizationSectionNavigation.tsx`
+      `src/components/TokenizationSectionNavigation.tsx`
       and add matching translation keys in locale files.
 
   - title: Ensure subtopic navigation scrolls to top
     description: |
       When the user clicks subtopic links, scroll to the top of the page.
       Implement this on subtopic navigation links in
-      `/home/runner/work/llms-explained/llms-explained/ChenPeleg/llms-explained/src/components/TokenizationSectionNavigation.tsx`.
+      `src/components/TokenizationSectionNavigation.tsx`.
 
   - title: Add direction for English-only interactive UI
     description: |
