@@ -1,4 +1,5 @@
 import TokenizationSectionNavigation from '../../components/TokenizationSectionNavigation';
+import TokenBudgetSimulator from '../../components/tokenization/TokenBudgetSimulator';
 import { useTranslate } from '../../hooks/useTranslate';
 
 const PromptEngineeringImplicationsPage = () => {
@@ -10,6 +11,11 @@ const PromptEngineeringImplicationsPage = () => {
             <p>{t('tok_deep_4_intro')}</p>
             <p>{t('tok_deep_4_p1')}</p>
             <p>{t('tok_deep_4_p2')}</p>
+
+            <div className="not-prose my-6">
+                <TokenBudgetSimulator />
+            </div>
+
             <TokenizationSectionNavigation showBackToOverview />
         </article>
     );

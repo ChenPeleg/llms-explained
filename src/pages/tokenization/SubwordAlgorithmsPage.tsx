@@ -1,4 +1,5 @@
 import TokenizationSectionNavigation from '../../components/TokenizationSectionNavigation';
+import SubwordMergeDemo from '../../components/tokenization/SubwordMergeDemo';
 import { useTranslate } from '../../hooks/useTranslate';
 
 const SubwordAlgorithmsPage = () => {
@@ -10,6 +11,11 @@ const SubwordAlgorithmsPage = () => {
             <p>{t('tok_deep_1_intro')}</p>
             <p>{t('tok_deep_1_p1')}</p>
             <p>{t('tok_deep_1_p2')}</p>
+
+            <div className="not-prose my-6">
+                <SubwordMergeDemo />
+            </div>
+
             <TokenizationSectionNavigation showBackToOverview />
         </article>
     );
