@@ -1,4 +1,5 @@
 import TokenizationSectionNavigation from '../../components/TokenizationSectionNavigation';
+import ModelTokenComparator from '../../components/tokenization/ModelTokenComparator';
 import { useTranslate } from '../../hooks/useTranslate';
 
 const RealModelTokenizersPage = () => {
@@ -10,6 +11,11 @@ const RealModelTokenizersPage = () => {
             <p>{t('tok_deep_2_intro')}</p>
             <p>{t('tok_deep_2_p1')}</p>
             <p>{t('tok_deep_2_p2')}</p>
+
+            <div className="not-prose my-6">
+                <ModelTokenComparator />
+            </div>
+
             <TokenizationSectionNavigation showBackToOverview />
         </article>
     );

@@ -1,5 +1,7 @@
 import TokenizerPlayground from '../components/TokenizerPlayground';
 import TokenizationSectionNavigation from '../components/TokenizationSectionNavigation';
+import TokenFlowDiagram from '../components/tokenization/TokenFlowDiagram';
+import TokenSplitPlayground from '../components/tokenization/TokenSplitPlayground';
 import { useTranslate } from '../hooks/useTranslate';
 
 /**
@@ -41,11 +43,19 @@ const TokenizationPage = () => {
             <h2>{t('tok_h2_practice')}</h2>
             <p>{t('tok_practice_p')}</p>
 
+            <div className="not-prose my-6">
+                <TokenFlowDiagram />
+            </div>
+
             <h2>{t('tok_h2_intermediate')}</h2>
             <p>{t('tok_intermediate_p')}</p>
 
             <div className="not-prose my-6">
                 <TokenizerPlayground />
+            </div>
+
+            <div className="not-prose my-6">
+                <TokenSplitPlayground />
             </div>
 
             <h2>{t('tok_h2_checkpoint')}</h2>
