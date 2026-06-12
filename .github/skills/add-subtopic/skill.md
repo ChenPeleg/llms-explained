@@ -1,5 +1,5 @@
-# Add a subtopic to a topic
-
+---
+title: Add a subtopic to a topic
 description: |
   Follow this skill when adding a new subtopic page to an existing topic
   (for example: adding another subtopic under Tokenization).
@@ -31,3 +31,4 @@ steps:
       - `npm run typecheck`
       - `npm run test -- --run`
       - `npm run build`
+---
