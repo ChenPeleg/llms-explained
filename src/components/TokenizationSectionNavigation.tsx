@@ -28,6 +28,7 @@ const TokenizationSectionNavigation = ({
     showBackToOverview = false,
 }: TokenizationSectionNavigationProps) => {
     const { t } = useTranslate();
+    const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
     return (
         <div className="not-prose mt-8 rounded-xl border border-blue-100 bg-blue-50 p-6 dark:border-blue-900/30 dark:bg-blue-900/10">
@@ -37,6 +38,7 @@ const TokenizationSectionNavigation = ({
             <p className="mb-5">
                 <Link
                     to="/embeddings"
+                    onClick={scrollToTop}
                     className="text-blue-700 hover:underline dark:text-blue-300"
                 >
                     {t('nav_embeddings')}
@@ -51,6 +53,7 @@ const TokenizationSectionNavigation = ({
                     <li key={deepDiveLink.to}>
                         <Link
                             to={deepDiveLink.to}
+                            onClick={scrollToTop}
                             className="text-blue-700 hover:underline dark:text-blue-300"
                         >
                             {t(deepDiveLink.key)}
@@ -67,6 +70,7 @@ const TokenizationSectionNavigation = ({
                     <p>
                         <Link
                             to="/tokenization"
+                            onClick={scrollToTop}
                             className="text-blue-700 hover:underline dark:text-blue-300"
                         >
                             {t('tok_back_to_overview_link')}
