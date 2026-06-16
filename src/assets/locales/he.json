@@ -442,5 +442,7 @@
     "emb_scatter_hover_word": "מילה",
     "emb_scatter_hover_cluster": "אשכול",
     "emb_scatter_hover_hint": "רחפו מעל נקודה כדי לראות מילה ואשכול, או לחצו על נקודות/מקרא כדי לסנן אשכולות.",
-    "emb_reset": "איפוס"
+    "emb_reset": "איפוס",
+    "emb_vec_demo_no_match": "אין התאמה קרובה",
+    "emb_scatter_separator": "·"
 }

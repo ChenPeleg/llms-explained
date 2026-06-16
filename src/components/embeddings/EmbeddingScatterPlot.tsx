@@ -117,7 +117,7 @@ const EmbeddingScatterPlot = () => {
 
             <p className="mt-3 min-h-6 text-sm text-gray-600 dark:text-gray-300">
                 {hoveredWord
-                    ? `${t('emb_scatter_hover_word')}: ${hoveredWord.word} · ${t('emb_scatter_hover_cluster')}: ${clusterLabels[hoveredWord.cluster]}`
+                    ? `${t('emb_scatter_hover_word')}: ${hoveredWord.word} ${t('emb_scatter_separator')} ${t('emb_scatter_hover_cluster')}: ${clusterLabels[hoveredWord.cluster]}`
                     : t('emb_scatter_hover_hint')}
             </p>
 

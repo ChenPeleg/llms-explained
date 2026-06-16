@@ -124,7 +124,7 @@ const VectorArithmeticDemo = () => {
 
             <p className="mt-3 text-sm text-gray-700 dark:text-gray-200">
                 {selected.a} - {selected.b} + {selected.c} ≈{' '}
-                <strong>{nearest?.word}</strong>
+                <strong>{nearest?.word ?? t('emb_vec_demo_no_match')}</strong>
             </p>
 
             <button

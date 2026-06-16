@@ -442,5 +442,7 @@
     "emb_scatter_hover_word": "Word",
     "emb_scatter_hover_cluster": "Cluster",
     "emb_scatter_hover_hint": "Hover a point to inspect its word and cluster, or click points/legend to filter clusters.",
-    "emb_reset": "Reset"
+    "emb_reset": "Reset",
+    "emb_vec_demo_no_match": "no close match",
+    "emb_scatter_separator": "·"
 }

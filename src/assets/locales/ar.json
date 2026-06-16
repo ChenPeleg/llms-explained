@@ -194,5 +194,7 @@
     "emb_scatter_hover_word": "الكلمة",
     "emb_scatter_hover_cluster": "العنقود",
     "emb_scatter_hover_hint": "مرّر المؤشر فوق نقطة لرؤية الكلمة والعنقود، أو انقر النقاط/وسيلة الإيضاح لتصفية العناقيد.",
-    "emb_reset": "إعادة ضبط"
+    "emb_reset": "إعادة ضبط",
+    "emb_vec_demo_no_match": "لا توجد مطابقة قريبة",
+    "emb_scatter_separator": "·"
 }
