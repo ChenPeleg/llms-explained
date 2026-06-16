@@ -14,6 +14,8 @@ import MultilingualEdgeCasesPage from './pages/tokenization/MultilingualEdgeCase
 import PromptEngineeringImplicationsPage from './pages/tokenization/PromptEngineeringImplicationsPage';
 import Word2VecPage from './pages/embeddings/Word2VecPage';
 import PositionalEncodingsPage from './pages/embeddings/PositionalEncodingsPage';
+import CosineSimilarityPage from './pages/embeddings/CosineSimilarityPage';
+import ContextualEmbeddingsPage from './pages/embeddings/ContextualEmbeddingsPage';
 import EncoderPage from './pages/transformer/EncoderPage';
 import DecoderPage from './pages/transformer/DecoderPage';
 import FeedForwardPage from './pages/transformer/FeedForwardPage';
@@ -63,6 +65,14 @@ export function AppRoutes() {
                     <Route
                         path="positional-encodings"
                         element={<PositionalEncodingsPage />}
+                    />
+                    <Route
+                        path="cosine-similarity"
+                        element={<CosineSimilarityPage />}
+                    />
+                    <Route
+                        path="contextual-embeddings"
+                        element={<ContextualEmbeddingsPage />}
                     />
                 </Route>
                 <Route path="/transformer">

@@ -1,24 +1,6 @@
-import { Link } from 'react-router';
-import embeddingData from '../data/embedding-projections.json';
+import EmbeddingsSectionNavigation from '../components/EmbeddingsSectionNavigation';
+import EmbeddingScatterPlot from '../components/embeddings/EmbeddingScatterPlot';
 import { useTranslate } from '../hooks/useTranslate';
-
-interface EmbeddingPoint {
-    word: string;
-    x: number;
-    y: number;
-    cluster: number;
-}
-
-const CLUSTER_COLORS = [
-    { fill: '#3b82f6', stroke: '#1d4ed8' },
-    { fill: '#10b981', stroke: '#065f46' },
-    { fill: '#f59e0b', stroke: '#92400e' },
-    { fill: '#8b5cf6', stroke: '#4c1d95' },
-];
-
-const CLUSTER_KEY_SUFFIXES = ['royalty', 'people', 'animals', 'cities'];
-
-const points = embeddingData as EmbeddingPoint[];
 
 /**
  * Embeddings Page
@@ -26,10 +8,6 @@ const points = embeddingData as EmbeddingPoint[];
  */
 const EmbeddingsPage = () => {
     const { t } = useTranslate();
-
-    const clusterLabels = CLUSTER_KEY_SUFFIXES.map((s) =>
-        t(`emb_cluster_${s}`)
-    );
 
     return (
         <article className="prose prose-gray dark:prose-invert max-w-none">
@@ -73,46 +51,24 @@ const EmbeddingsPage = () => {
                     <tbody className="divide-y divide-gray-100 dark:divide-gray-800">
                         <tr>
                             <td className="px-4 py-2 font-medium">king</td>
-                            <td className="px-4 py-2 font-mono">
-                                (0.9, 0.1, 0.0)
-                            </td>
+                            <td className="px-4 py-2 font-mono">(0.9, 0.1, 0.0)</td>
                         </tr>
                         <tr>
                             <td className="px-4 py-2 font-medium">queen</td>
-                            <td className="px-4 py-2 font-mono">
-                                (0.9, 0.9, 0.0)
-                            </td>
+                            <td className="px-4 py-2 font-mono">(0.9, 0.9, 0.0)</td>
                         </tr>
                         <tr>
                             <td className="px-4 py-2 font-medium">man</td>
-                            <td className="px-4 py-2 font-mono">
-                                (0.1, 0.05, 0.0)
-                            </td>
+                            <td className="px-4 py-2 font-mono">(0.1, 0.05, 0.0)</td>
                         </tr>
                         <tr>
                             <td className="px-4 py-2 font-medium">woman</td>
-                            <td className="px-4 py-2 font-mono">
-                                (0.1, 0.9, 0.0)
-                            </td>
-                        </tr>
-                        <tr>
-                            <td className="px-4 py-2 font-medium">dog</td>
-                            <td className="px-4 py-2 font-mono">
-                                (0.0, 0.1, 0.95)
-                            </td>
-                        </tr>
-                        <tr>
-                            <td className="px-4 py-2 font-medium">cat</td>
-                            <td className="px-4 py-2 font-mono">
-                                (0.0, 0.2, 0.9)
-                            </td>
+                            <td className="px-4 py-2 font-mono">(0.1, 0.9, 0.0)</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-            <p className="text-sm text-gray-500 dark:text-gray-400">
-                {t('emb_worked_caption')}
-            </p>
+            <p className="text-sm text-gray-500 dark:text-gray-400">{t('emb_worked_caption')}</p>
             <p>{t('emb_worked_followup')}</p>
 
             <h2>{t('emb_h2_similarity')}</h2>
@@ -128,50 +84,8 @@ const EmbeddingsPage = () => {
                 <li>{t('emb_sim_example_low')}</li>
             </ul>
 
-            <h2>{t('emb_h2_learned')}</h2>
-            <p>{t('emb_learned_p')}</p>
-            <p>{t('emb_learned_steps_intro')}</p>
-            <ol>
-                <li>{t('emb_learned_step_lookup')}</li>
-                <li>{t('emb_learned_step_forward')}</li>
-                <li>{t('emb_learned_step_loss')}</li>
-                <li>{t('emb_learned_step_update')}</li>
-            </ol>
-
-            <h2>{t('emb_h2_lifecycle')}</h2>
-            <p>{t('emb_lifecycle_p')}</p>
-            <ul>
-                <li>
-                    <strong>{t('emb_life_input_label')}</strong> —{' '}
-                    {t('emb_life_input_desc')}
-                </li>
-                <li>
-                    <strong>{t('emb_life_hidden_label')}</strong> —{' '}
-                    {t('emb_life_hidden_desc')}
-                </li>
-                <li>
-                    <strong>{t('emb_life_output_label')}</strong> —{' '}
-                    {t('emb_life_output_desc')}
-                </li>
-            </ul>
-
-            <h2>{t('emb_h2_pitfalls')}</h2>
-            <p>{t('emb_pitfalls_intro')}</p>
-            <ul>
-                <li>{t('emb_pitfall_bias')}</li>
-                <li>{t('emb_pitfall_polysemy')}</li>
-                <li>{t('emb_pitfall_oov')}</li>
-            </ul>
-
             <h2>{t('emb_h2_positional')}</h2>
             <p>{t('emb_positional_p')}</p>
-            <p>
-                {t('emb_positional_attention_bridge')}{' '}
-                <Link to="/attention" className="font-medium underline">
-                    {t('att_h1')}
-                </Link>
-                .
-            </p>
             <ul>
                 <li>
                     <strong>{t('emb_pos_sinusoidal_label')}</strong>{' '}
@@ -187,90 +101,19 @@ const EmbeddingsPage = () => {
                 </li>
             </ul>
 
-            <div className="not-prose my-6 rounded-xl border border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800">
-                <h3 className="mb-1 text-lg font-semibold text-gray-900 dark:text-gray-100">
-                    {t('emb_scatter_title')}
-                </h3>
-                <p className="mb-4 text-sm text-gray-500 dark:text-gray-400">
-                    {t('emb_scatter_desc')}
-                </p>
-
-                <div className="mb-3 flex flex-wrap gap-3">
-                    {clusterLabels.map((label, i) => (
-                        <span
-                            key={label}
-                            className="flex items-center gap-1.5 text-sm text-gray-700 dark:text-gray-300"
-                        >
-                            <span
-                                className="inline-block h-3 w-3 rounded-full"
-                                style={{
-                                    backgroundColor: CLUSTER_COLORS[i].fill,
-                                }}
-                            />
-                            {label}
-                        </span>
-                    ))}
-                </div>
-
-                <svg
-                    viewBox="0 0 400 320"
-                    className="w-full rounded-lg bg-gray-50 dark:bg-gray-900"
-                    aria-label="2-D embedding space scatter plot"
-                    role="img"
-                >
-                    {points.map((pt) => {
-                        const cx = pt.x * 380 + 10;
-                        const cy = (1 - pt.y) * 300 + 10;
-                        const color = CLUSTER_COLORS[pt.cluster];
-                        return (
-                            <g key={pt.word}>
-                                <circle
-                                    cx={cx}
-                                    cy={cy}
-                                    r={6}
-                                    fill={color.fill}
-                                    stroke={color.stroke}
-                                    strokeWidth={1.5}
-                                    opacity={0.85}
-                                />
-                                <text
-                                    x={cx + 8}
-                                    y={cy + 4}
-                                    fontSize={11}
-                                    fill="currentColor"
-                                    className="fill-gray-700 dark:fill-gray-200"
-                                >
-                                    {pt.word}
-                                </text>
-                            </g>
-                        );
-                    })}
-                </svg>
+            <div className="not-prose my-6">
+                <EmbeddingScatterPlot />
             </div>
 
-            <div className="not-prose mt-8 rounded-xl border border-blue-100 bg-blue-50 p-6 dark:border-blue-900/30 dark:bg-blue-900/10">
-                <h2 className="mb-3 text-lg font-semibold text-blue-900 dark:text-blue-200">
-                    {t('dive_deeper')}
-                </h2>
-                <ul className="space-y-2">
-                    <li>
-                        <Link
-                            to="/embeddings/word2vec"
-                            className="text-blue-700 hover:underline dark:text-blue-300"
-                        >
-                            {t('sub_word2vec_h1')}
-                        </Link>
-                    </li>
-                    <li>
-                        <Link
-                            to="/embeddings/positional-encodings"
-                            className="text-blue-700 hover:underline dark:text-blue-300"
-                        >
-                            {t('sub_positional_h1')}
-                        </Link>
-                    </li>
-                </ul>
-            </div>
+            <h2>{t('emb_checkpoint_h2')}</h2>
+            <p>{t('emb_checkpoint_intro')}</p>
+            <ul>
+                <li>{t('emb_checkpoint_li1')}</li>
+                <li>{t('emb_checkpoint_li2')}</li>
+                <li>{t('emb_checkpoint_li3')}</li>
+            </ul>
+
+            <EmbeddingsSectionNavigation />
         </article>
     );
 };
