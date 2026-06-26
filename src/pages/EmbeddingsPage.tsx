@@ -16,6 +16,42 @@ const EmbeddingsPage = () => {
             <p>{t('emb_intro')}</p>
 
             <h2>{t('emb_h2_onehot')}</h2>
+            <p>{t('emb_onehot_what')}</p>
+            <div className="not-prose my-4 overflow-x-auto rounded-lg border border-gray-200 dark:border-gray-700">
+                <table className="w-full text-sm">
+                    <caption className="px-4 py-2 text-left text-xs text-gray-500 dark:text-gray-400">
+                        {t('emb_onehot_table_caption')}
+                    </caption>
+                    <thead className="bg-gray-50 dark:bg-gray-800">
+                        <tr>
+                            <th className="px-4 py-2 text-left font-semibold text-gray-700 dark:text-gray-200">
+                                {t('emb_onehot_table_word')}
+                            </th>
+                            <th className="px-4 py-2 text-left font-semibold text-gray-700 dark:text-gray-200">
+                                {t('emb_onehot_table_vector')}
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody className="divide-y divide-gray-100 dark:divide-gray-800">
+                        <tr>
+                            <td className="px-4 py-2 font-medium">cat</td>
+                            <td className="px-4 py-2 font-mono">[1, 0, 0, 0]</td>
+                        </tr>
+                        <tr>
+                            <td className="px-4 py-2 font-medium">dog</td>
+                            <td className="px-4 py-2 font-mono">[0, 1, 0, 0]</td>
+                        </tr>
+                        <tr>
+                            <td className="px-4 py-2 font-medium">run</td>
+                            <td className="px-4 py-2 font-mono">[0, 0, 1, 0]</td>
+                        </tr>
+                        <tr>
+                            <td className="px-4 py-2 font-medium">fast</td>
+                            <td className="px-4 py-2 font-mono">[0, 0, 0, 1]</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
             <p>{t('emb_onehot_p')}</p>
 
             <h2>{t('emb_h2_examples')}</h2>
