@@ -12,6 +12,7 @@ import SubwordAlgorithmsPage from './pages/tokenization/SubwordAlgorithmsPage';
 import RealModelTokenizersPage from './pages/tokenization/RealModelTokenizersPage';
 import MultilingualEdgeCasesPage from './pages/tokenization/MultilingualEdgeCasesPage';
 import PromptEngineeringImplicationsPage from './pages/tokenization/PromptEngineeringImplicationsPage';
+import OneHotPage from './pages/embeddings/OneHotPage';
 import Word2VecPage from './pages/embeddings/Word2VecPage';
 import PositionalEncodingsPage from './pages/embeddings/PositionalEncodingsPage';
 import CosineSimilarityPage from './pages/embeddings/CosineSimilarityPage';
@@ -61,6 +62,7 @@ export function AppRoutes() {
                 </Route>
                 <Route path="/embeddings">
                     <Route index element={<EmbeddingsPage />} />
+                    <Route path="one-hot" element={<OneHotPage />} />
                     <Route path="word2vec" element={<Word2VecPage />} />
                     <Route
                         path="positional-encodings"
