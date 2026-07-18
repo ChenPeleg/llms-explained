@@ -6,6 +6,7 @@ interface EmbeddingsSectionNavigationProps {
 }
 
 const DEEP_DIVE_LINKS = [
+    { to: '/embeddings/one-hot', key: 'emb_deep_0_label' },
     { to: '/embeddings/word2vec', key: 'emb_deep_1_label' },
     { to: '/embeddings/positional-encodings', key: 'emb_deep_2_label' },
     { to: '/embeddings/cosine-similarity', key: 'emb_deep_3_label' },
