@@ -16,6 +16,30 @@ const TransformerPage = () => {
 
             <p>{t('tr_intro')}</p>
 
+            <h2>{t('tr_h2_analogy')}</h2>
+            <p>{t('tr_analogy_p1')}</p>
+            <p>{t('tr_analogy_before')}</p>
+            <p>{t('tr_analogy_principles_intro')}</p>
+            <ol>
+                <li>
+                    <strong>{t('tr_analogy_parallel_label')}</strong> —{' '}
+                    {t('tr_analogy_parallel_desc')}
+                </li>
+                <li>
+                    <strong>{t('tr_analogy_attention_label')}</strong> —{' '}
+                    {t('tr_analogy_attention_desc')}
+                </li>
+            </ol>
+            <h3>{t('tr_analogy_summary_h')}</h3>
+            <ol>
+                <li>{t('tr_analogy_summary_input')}</li>
+                <li>{t('tr_analogy_summary_understand')}</li>
+                <li>{t('tr_analogy_summary_predict')}</li>
+            </ol>
+            <p>
+                <strong>{t('tr_analogy_bottom_line')}</strong>
+            </p>
+
             <h2>{t('tr_h2_why')}</h2>
             <p>{t('tr_why_p')}</p>
             <ul>
