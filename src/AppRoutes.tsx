@@ -120,7 +120,7 @@ export function AppRoutes() {
                     <Route path="lora" element={<LoRAPage />} />
                 </Route>
                 <Route
-                    path="/pre-transformer-techniques"
+                    path="pre-transformer-techniques"
                     element={<PreTransformerTechniquesPage />}
                 />
             </Route>
