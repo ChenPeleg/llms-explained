@@ -85,6 +85,10 @@ const Navbar = () => {
         { to: '/embeddings', label: t('nav_embeddings') },
         { to: '/transformer', label: t('nav_transformer') },
         { to: '/attention', label: t('nav_attention') },
+        {
+            to: '/pre-transformer-techniques',
+            label: t('nav_pre_transformer'),
+        },
         { to: '/training', label: t('nav_training') },
         { to: '/inference', label: t('nav_inference') },
         { to: '/scaling', label: t('nav_scaling') },
