@@ -14,6 +14,11 @@ const Sidebar = () => {
         { to: '/embeddings', label: t('nav_embeddings'), emoji: '🔢' },
         { to: '/transformer', label: t('nav_transformer'), emoji: '🏗️' },
         { to: '/attention', label: t('nav_attention'), emoji: '👁️' },
+        {
+            to: '/pre-transformer-techniques',
+            label: t('nav_pre_transformer'),
+            emoji: '🧠',
+        },
         { to: '/training', label: t('nav_training'), emoji: '🎯' },
         { to: '/inference', label: t('nav_inference'), emoji: '⚡' },
         { to: '/scaling', label: t('nav_scaling'), emoji: '📈' },

@@ -8,6 +8,7 @@ import TrainingPage from './pages/TrainingPage';
 import InferencePage from './pages/InferencePage';
 import ScalingLawsPage from './pages/ScalingLawsPage';
 import FineTuningPage from './pages/FineTuningPage';
+import PreTransformerTechniquesPage from './pages/PreTransformerTechniquesPage';
 import SubwordAlgorithmsPage from './pages/tokenization/SubwordAlgorithmsPage';
 import RealModelTokenizersPage from './pages/tokenization/RealModelTokenizersPage';
 import MultilingualEdgeCasesPage from './pages/tokenization/MultilingualEdgeCasesPage';
@@ -118,6 +119,10 @@ export function AppRoutes() {
                     <Route path="rlhf" element={<RLHFPage />} />
                     <Route path="lora" element={<LoRAPage />} />
                 </Route>
+                <Route
+                    path="pre-transformer-techniques"
+                    element={<PreTransformerTechniquesPage />}
+                />
             </Route>
         </Routes>
     );

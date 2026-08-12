@@ -34,6 +34,12 @@ const HomePage = () => {
             descKey: 'home_topic_attention_desc',
         },
         {
+            to: '/pre-transformer-techniques',
+            emoji: '🧠',
+            titleKey: 'nav_pre_transformer',
+            descKey: 'home_topic_pre_transformer_desc',
+        },
+        {
             to: '/training',
             emoji: '🎯',
             titleKey: 'nav_training',
