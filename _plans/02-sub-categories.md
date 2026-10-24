@@ -1,5 +1,13 @@
 # Plan: Sub-Categories for Topic Routes
 
+## Implementation Status
+
+**Partially implemented.** Nested routes, subtopic pages, return-to-overview navigation, and translations are in place across the planned topic areas. The tokenization route set diverged from this original proposal: the active deep dives are `/tokenization/subword-algorithms`, `/tokenization/model-tokenizers`, `/tokenization/multilingual-edge-cases`, and `/tokenization/prompt-engineering-implications`, rather than the originally proposed `/tiktoken`, `/wordpiece`, and `/sentencepiece` routes.
+
+The corresponding `TikTokenPage`, `WordPiecePage`, and `SentencePiecePage` files remain in the source tree but are not registered as routes. Remaining planning work is to decide whether to restore those individual routes or retire their standalone pages in favor of the current consolidated deep dives. If any are restored, update the route links and translations accordingly and avoid duplicating the active content.
+
+---
+
 ## Overview
 
 Each top-level topic route (e.g. `/tokenization`) will gain sub-routes that drill into focused sub-topics (e.g. `/tokenization/tiktoken`). Every sub-route page includes a "Return to main article" button that navigates back to the parent topic.
